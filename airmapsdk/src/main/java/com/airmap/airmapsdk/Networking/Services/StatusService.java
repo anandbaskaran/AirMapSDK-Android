@@ -48,7 +48,7 @@ class StatusService extends BaseService {
      * Get a flight status based on a Multi-point based flight
      *
      * @param path         The points on the flight path
-     * @param width        The line width for the flight
+     * @param buffer       The line width for the flight
      * @param takeOffPoint The take off point along the flight path
      * @param types        Airspace types to include in the calculation and response
      * @param ignoredTypes Airspace types to ignore in the calculation and response
@@ -56,7 +56,7 @@ class StatusService extends BaseService {
      * @param date         Date and time for planned flight
      * @param listener     The callback that is invoked on success or error
      */
-    public static void checkFlightPath(List<Coordinate> path, int width, Coordinate takeOffPoint,
+    public static void checkFlightPath(List<Coordinate> path, int buffer, Coordinate takeOffPoint,
                                        List<MappingService.AirMapAirspaceType> types,
                                        List<MappingService.AirMapAirspaceType> ignoredTypes,
                                        boolean weather, Date date,
@@ -64,7 +64,7 @@ class StatusService extends BaseService {
         String url = statusPathUrl;
         Map<String, String> params = AirMapStatus.getAsParams(takeOffPoint, types, ignoredTypes, weather, date);
         params.put("geometry", "LINESTRING(" + makeGeoString(path) + ")");
-//        params.put("width", String.valueOf(width));
+        params.put("buffer", String.valueOf(buffer));
         AirMap.getClient().get(url, params, new GenericOkHttpCallback(listener, AirMapStatus.class));
     }
 
