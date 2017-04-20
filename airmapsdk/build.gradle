@@ -57,7 +57,7 @@ dependencies {
     compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
     compile('org.eclipse.paho:org.eclipse.paho.android.service:1.1.1') { exclude module: 'support-v4' }
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'online.devliving:securedpreferencestore:0.3.1'
+    compile 'com.airmap.securedpreferences:securedpreferencestore:0.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile 'com.ibm.icu:icu4j:58.2'
 }
